@@ -1,0 +1,46 @@
+<!--
+  Generated template for the PedidosPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+      <ion-title><div class="title" >Pedidos</div></ion-title>
+      <ion-buttons end>          
+        <button  padding ion-button icon-only (click)="closeModal()">
+            <ion-icon item-right name="md-close-circle"></ion-icon>
+        </button>
+    </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  
+  <ion-content padding>
+  
+    <ion-label text-center><h1>{{model.Nome}}</h1></ion-label>
+  
+    <div>
+      <ion-list>
+        <ion-item-sliding *ngFor="let item of Pedidos" >
+     
+              <button  padding-top ion-item (click)="onClickList(item)">
+                  <div  class ="atribute"  text-wrap text-uppercase>Valor Total : {{item.Total }} </div>
+                  <div  text-wrap text-uppercase>Data Inicial : {{item.DataPedidoFeito}} </div>
+                  <div  text-wrap text-uppercase>Status : {{item.Status}} </div>
+              </button>
+  
+                <ion-item-options>
+                  <button ion-button color = "danger" (click)="onRemoveItem(item)" >
+                      <ion-icon name="trash"></ion-icon>
+                  </button>
+              </ion-item-options>
+  
+        </ion-item-sliding>
+      </ion-list>
+    </div>
+  
+      <ion-fab bottom right >
+        <button ion-fab (click)="onCreateItem($event)" ><ion-icon name="md-add"></ion-icon></button>
+      </ion-fab>
+  </ion-content>

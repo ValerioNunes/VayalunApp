@@ -1,0 +1,38 @@
+<!--
+  Generated template for the CardapioPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title><div class="title"  >Cardápio</div></ion-title>
+      <ion-buttons end>          
+        <button  padding ion-button icon-only (click)="closeModal()">
+            <ion-icon item-right name="md-close-circle"></ion-icon>
+        </button>
+    </ion-buttons>
+    </ion-navbar>
+  </ion-header>
+  
+  <ion-content padding>
+
+    <h1>O que você deseja ?</h1>
+    <div>
+        <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+        <ion-list>
+            <ion-item-sliding *ngFor="let item of CardapioList">
+                <button  padding-top ion-item (click)="onClickList(item)">
+                    <div  class ="atribute"  text-wrap text-uppercase>Nome : {{item.Nome}}</div>
+                    <div  text-wrap text-uppercase>Descrição: {{item.Descricao}} </div>
+                    <div  text-wrap text-uppercase>Valor Unitário: {{item.Preco}} </div>
+                </button>
+          </ion-item-sliding>
+        </ion-list>
+    </div>
+    
+
+  </ion-content>

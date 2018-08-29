@@ -3,16 +3,29 @@
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
-    <ion-title>Home</ion-title>
+    <ion-title><div class="title" >Home</div></ion-title>
+
+    <ion-buttons end>          
+      <button  padding ion-button icon-only (click)="onUpdateList()">
+          <ion-icon item-right name="md-refresh"></ion-icon>
+      </button>
+  </ion-buttons>
   </ion-navbar>
 </ion-header>
 
 <ion-content padding>
-  <h3>Ionic Menu Starter</h3>
+  <h1>Vayalun</h1>
+  <div>
+      <ion-searchbar [(ngModel)]="searchTerm" (ionInput)="setFilteredItems()"></ion-searchbar>
+            <ion-list>
+              <button ion-item *ngFor="let item of  mesasList" (click)="onClickList(item)">
+                <ion-avatar item-start>
+                  <img src="assets/imgs/{{item.Status}}.png">
+                </ion-avatar>
+                <div text-uppercase >{{item.Status}}</div>
+                <div class ="atribute"  text-wrap text-uppercase item-end>{{item.Nome}}</div> 
+              </button>
+            </ion-list>
+  </div>
 
-  <p>
-    If you get lost, the <a href="http://ionicframework.com/docs/v2">docs</a> will show you the way.
-  </p>
-
-  <button ion-button secondary menuToggle>Toggle Menu</button>
 </ion-content>
